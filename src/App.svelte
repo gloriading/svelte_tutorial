@@ -1,24 +1,22 @@
 <script>
-  let name = '';
+  let firstName = '';
+  let lastName = '';
+
   const src = 'favicon.png';
-  let count = 0;
-  const increment = () => (count += 1);
 
-  // const handleInput = (event) => {
-  //   name = event.target.value;
-  // };
-
-  const resetName = () => (name = 'unknown');
+  // Reactive
+  $: fullName = `${firstName} ${lastName}`;
+  $: console.log(lastName);
 </script>
 
 <main>
-  <h1>Hello {name}</h1>
-  <h3>Counter: {count}</h3>
-  <button on:click={increment}>Add 1 to counter</button>
+  <h1>Hello {fullName}</h1>
   <img {src} alt="Svelte" />
-  <input type="text" bind:value={name} />
-  <!-- <input type="text" on:input={handleInput} value={name} /> -->
-  <button on:click={resetName}>Set name to unknown</button>
+
+  <label for="firstName">First Name</label>
+  <input type="text" bind:value={firstName} />
+  <label for="lastName">Last Name</label>
+  <input type="text" bind:value={lastName} />
 </main>
 
 <style>
