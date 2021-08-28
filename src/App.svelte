@@ -1,9 +1,14 @@
 <script>
-  const name = 'Gloria';
+  let name = '';
   const src = 'favicon.png';
   let count = 0;
-
   const increment = () => (count += 1);
+
+  // const handleInput = (event) => {
+  //   name = event.target.value;
+  // };
+
+  const resetName = () => (name = 'unknown');
 </script>
 
 <main>
@@ -11,6 +16,9 @@
   <h3>Counter: {count}</h3>
   <button on:click={increment}>Add 1 to counter</button>
   <img {src} alt="Svelte" />
+  <input type="text" bind:value={name} />
+  <!-- <input type="text" on:input={handleInput} value={name} /> -->
+  <button on:click={resetName}>Set name to unknown</button>
 </main>
 
 <style>
