@@ -22,6 +22,10 @@
   // Reactive
   $: fullName = `${firstName} ${lastName}`;
   $: console.log(lastName);
+
+  const log = () => {
+    console.log('clickedd button!');
+  };
 </script>
 
 <Announcement />
@@ -49,8 +53,8 @@
     <p>There is no fruit</p>
   {/each}
 
-  <Button btnText={'Hello World'} />
-  <Button />
+  <button on:click={log}>App button</button>
+  <Button on:click={log} btnText={'Hello World'} />
 </main>
 
 <style>

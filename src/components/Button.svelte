@@ -3,6 +3,17 @@
   export let btnText = 'Default Text';
 </script>
 
-<button>{btnText}</button>
+<div on:click>
+  <span>Click to log</span>
+  <button>{btnText}</button>
+</div>
 
-<style></style>
+<style>
+  div {
+    padding: 1rem;
+    border: 1px solid #666;
+  }
+  button {
+    background-color: pink;
+  }
+</style>
