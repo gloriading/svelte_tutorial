@@ -2,6 +2,7 @@
   import Announcement from './components/Announcement.svelte';
   import Button from './components/Button.svelte';
   import Card from './components/Card.svelte';
+  import Form from './components/Form.svelte';
 
   let firstName = '';
   let lastName = '';
@@ -36,6 +37,17 @@
     { id: 1, text: 'your favorite color?' },
     { id: 2, text: 'your favorite fruit?' },
   ];
+
+  // form
+  let foods = [
+    { name: 'apple', color: 'red', id: 1 },
+    { name: 'banana', color: 'yellow', id: 2 },
+    { name: 'orange', color: 'orange', id: 3 },
+  ];
+
+  const addFood = (e) => {
+    foods = [...foods, e.detail];
+  };
 </script>
 
 <Announcement />
@@ -102,6 +114,16 @@
       {/each}
     </select>
   </div>
+
+  <div class="foods">
+    <Form on:addFood={addFood} />
+    {#each foods as food (food.id)}
+      <div class="fooditem">
+        <h3>{food.name}</h3>
+        <p>Color: {food.color}</p>
+      </div>
+    {/each}
+  </div>
 </main>
 
 <style>
@@ -127,7 +149,8 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     width: 400px;
   }
-  .inputTypes {
+  .inputTypes,
+  .foods {
     width: 400px;
     padding: 10px;
 
@@ -135,5 +158,9 @@
     border: 2px solid yellowgreen;
     display: flex;
     flex-direction: column;
+  }
+  .fooditem {
+    background-color: #ddd;
+    margin-bottom: 5px;
   }
 </style>
