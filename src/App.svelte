@@ -1,6 +1,7 @@
 <script>
   import Announcement from './components/Announcement.svelte';
   import Button from './components/Button.svelte';
+  import Card from './components/Card.svelte';
 
   let firstName = '';
   let lastName = '';
@@ -55,6 +56,16 @@
 
   <button on:click={log}>App button</button>
   <Button on:click={log} btnText={'Hello World'} />
+  <Card>
+    <div>
+      <h3>Card</h3>
+      <p>this is a card</p>
+    </div>
+    <button slot="button">Card Button</button>
+    <div>
+      <h4>Footer</h4>
+    </div>
+  </Card>
 </main>
 
 <style>
