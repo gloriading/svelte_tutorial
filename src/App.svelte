@@ -18,8 +18,6 @@
     fruits = fruits.filter((fruit) => fruit.id !== id);
   };
 
-  let num = 7;
-
   // Reactive
   $: fullName = `${firstName} ${lastName}`;
   $: console.log(lastName);
@@ -27,6 +25,17 @@
   const log = () => {
     console.log('element clicked!');
   };
+
+  // input types
+  let name;
+  let num;
+  let isChecked = false;
+  let value = 1;
+  let selected;
+  let questions = [
+    { id: 1, text: 'your favorite color?' },
+    { id: 2, text: 'your favorite fruit?' },
+  ];
 </script>
 
 <Announcement />
@@ -66,6 +75,33 @@
       <h4>Footer</h4>
     </div>
   </Card>
+
+  <div class="inputTypes">
+    <input type="text" bind:value={name} />
+    <input type="number" bind:value={num} />
+    <input type="checkbox" bind:value={isChecked} />
+
+    <label>
+      <input type="radio" value={1} bind:group={value} />
+      1
+    </label>
+    <label>
+      <input type="radio" value={2} bind:group={value} />
+      2
+    </label>
+    <label>
+      <input type="radio" value={3} bind:group={value} />
+      3
+    </label>
+
+    <select bind:value={selected}>
+      {#each questions as question (question.id)}
+        <option value={question}>
+          {question.text}
+        </option>
+      {/each}
+    </select>
+  </div>
 </main>
 
 <style>
@@ -90,5 +126,14 @@
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     width: 400px;
+  }
+  .inputTypes {
+    width: 400px;
+    padding: 10px;
+
+    margin: 10px 0;
+    border: 2px solid yellowgreen;
+    display: flex;
+    flex-direction: column;
   }
 </style>
