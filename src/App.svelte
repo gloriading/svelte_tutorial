@@ -1,20 +1,35 @@
 <script>
+  import { create_out_transition } from 'svelte/internal';
+
   let firstName = '';
   let lastName = '';
-
   const src = 'favicon.png';
 
   // Loops
   let fruits = [
-    { name: 'apple', color: 'red', id: 1 },
-    { name: 'banana', color: 'yellow', id: 2 },
-    { name: 'orange', color: 'orange', id: 3 },
+    { name: 'apple', color: 'red', amount: 4, id: 1 },
+    { name: 'banana', color: 'yellow', amount: 2, id: 2 },
+    { name: 'orange', color: 'orange', amount: 8, id: 3 },
   ];
+
+  const deleteFruit = (id) => {
+    fruits = fruits.filter((fruit) => fruit.id !== id);
+  };
+
+  let num = 7;
 
   // Reactive
   $: fullName = `${firstName} ${lastName}`;
   $: console.log(lastName);
 </script>
+
+{#if num > 10}
+  <p>Greater than 10</p>
+{:else if num < 10}
+  <p>Less than 10</p>
+{:else}
+  <p>Is 10</p>
+{/if}
 
 <main>
   <h1>Hello {fullName}</h1>
@@ -26,10 +41,15 @@
   <input type="text" bind:value={lastName} />
 
   {#each fruits as fruit (fruit.id)}
-    <div class="card">
-      <h4>{fruit.name}</h4>
-      <p>{fruit.color}</p>
-    </div>
+    {#if fruit.amount > 4}
+      <div class="card">
+        <h4>{fruit.name}</h4>
+        <p>{fruit.color}</p>
+        <button on:click={() => deleteFruit(fruit.id)}>Delete</button>
+      </div>
+    {:else}
+      <p>The amount of {fruit.name} is less than or equal to 4</p>
+    {/if}
   {:else}
     <p>There is no fruit</p>
   {/each}
@@ -41,6 +61,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+  }
+  img {
+    height: 50px;
   }
   h1 {
     text-align: center;
