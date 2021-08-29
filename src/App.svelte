@@ -1,5 +1,5 @@
 <script>
-  import { create_out_transition } from 'svelte/internal';
+  import Announcement from './components/Announcement.svelte';
 
   let firstName = '';
   let lastName = '';
@@ -23,13 +23,7 @@
   $: console.log(lastName);
 </script>
 
-{#if num > 10}
-  <p>Greater than 10</p>
-{:else if num < 10}
-  <p>Less than 10</p>
-{:else}
-  <p>Is 10</p>
-{/if}
+<Announcement />
 
 <main>
   <h1>Hello {fullName}</h1>
