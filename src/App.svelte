@@ -26,6 +26,7 @@
 <Announcement />
 
 <main>
+  <div class="alert">50% off all fruit. Sign up for more fruit!</div>
   <h1>Hello {fullName}</h1>
   <img {src} alt="Svelte" />
 
