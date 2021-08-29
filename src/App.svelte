@@ -24,7 +24,7 @@
   $: console.log(lastName);
 
   const log = () => {
-    console.log('clickedd button!');
+    console.log('element clicked!');
   };
 </script>
 

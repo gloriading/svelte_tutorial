@@ -3,15 +3,15 @@
   export let btnText = 'Default Text';
 </script>
 
-<div on:click>
-  <span>Click to log</span>
-  <button>{btnText}</button>
+<!-- <div on:click|self> -->
+<div>
+  <button on:click|once>{btnText}</button>
 </div>
 
 <style>
   div {
     padding: 1rem;
-    border: 1px solid #666;
+    border: 2px solid #666;
   }
   button {
     background-color: pink;
